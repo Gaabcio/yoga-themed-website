@@ -103,6 +103,8 @@ a:hover{text-decoration:underline}
 /* Footer */
 .site-footer{border-top:1px solid var(--border); padding:1.2rem 0; background:#fff;}
 .footer__inner{display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:.8rem}
+.socials{display:flex; gap:.9rem; list-style:none; padding:0; margin:0}
+.socials a{font-weight:600}
 
 /* Helpers */
 .section__content{padding:.2rem}
