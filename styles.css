@@ -86,7 +86,8 @@ a:hover{text-decoration:underline}
 .hero__content p{color:var(--muted)}
 .hero__cta{display:flex; gap:.75rem; margin-top:1rem; flex-wrap:wrap}
 .hero__media{min-height:340px}
-.hero__photo{border-radius: var(--radius); background: url('https://images.unsplash.com/photo-1544367567-0f2fcb009e0b?q=80&w=1600&auto=format&fit=crop') center/cover no-repeat; width:100%; height: min(56vh, 520px); box-shadow: var(--shadow);}
+.hero__photo{border-radius: var(--radius); width:100%; height: min(56vh, 520px); box-shadow: var(--shadow);}
+
 .hero__shape{position:absolute; inset:auto -20% -20% -20%; height:40vh; background: radial-gradient(50% 50% at 50% 50%, rgba(107,155,141,.18) 0%, rgba(107,155,141,0) 70%); pointer-events:none;}
 
 /* Media / Map */
