@@ -131,7 +131,7 @@ a:hover{text-decoration:underline}
 .class-title{opacity:.9}
 .class-place{color:#444; font-size:.95rem}
 .class--yoga{background: color-mix(in srgb, var(--yoga) 55%, white);}
-.class--neutral{background: color-mix(in srgb, #6f7573 25%, white);}
+.class--neutral{background: color-mix(in srgb, #6f7573 15%, white);}
 .class--energy{background: color-mix(in srgb, var(--energy) 55%, white);}
 .sep{margin-top: clamp(1.2rem, 2.5vw, 2rem); border:0; height:1px; background:#ddd;}
 
