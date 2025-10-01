@@ -172,5 +172,6 @@ a:hover{text-decoration:underline}
   width:54px; height:54px; border-radius:50%;
   background:#25D366; color:#fff; display:grid; place-items:center;
   font-weight:900; letter-spacing:.5px; box-shadow: 0 10px 24px rgba(0,0,0,.18);
+  background: url('whatapp.png') center/100% no-repeat #25D366;
 }
 .wa-fab:hover{filter:brightness(1.05); text-decoration:none}
