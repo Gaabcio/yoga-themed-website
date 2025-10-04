@@ -853,6 +853,7 @@ a:hover {
   /* 1) */
   .hero__content-top{
     order: 1;
+    margin-bottom: -62px;
   }
 
   /* 2) */
