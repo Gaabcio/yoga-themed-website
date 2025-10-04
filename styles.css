@@ -460,11 +460,17 @@ a:hover {
 
 /* Wolne miejsca (badge + WA) */
 .slot-meta {
-  display: flex;
+  display: grid;
   align-items: center;
   flex-wrap: wrap;
   margin-top: .45rem
 }
+
+/* @media(max-width: 1100px) {
+  .slot-meta {
+    
+  }
+} */
 
 .badge {
   display: inline-block;
