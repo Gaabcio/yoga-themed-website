@@ -233,7 +233,7 @@ a:hover {
 }
 
 @media (max-width: 490px) {
-  .hero__inner a{
+  .hero__inner a {
     margin: auto;
   }
 }
@@ -306,22 +306,22 @@ a:hover {
     display: flex;
     flex-direction: column;
   }
-  
+
   .hero__content {
     display: flex;
     flex-direction: column;
   }
-  
+
   .hero__content-top {
     order: 1;
   }
-  
+
   .hero__media {
     order: 2;
     margin-bottom: 2rem;
     margin-top: 2rem;
   }
-  
+
   .hero__content-bottom {
     order: 3;
   }
@@ -838,32 +838,33 @@ a:hover {
    2) galeria 3 zdjęć
    3) “Jestem Basia…” + CTA
 */
-@media (max-width: 900px){
+@media (max-width: 900px) {
+
   /* układ w jednej kolumnie */
-  .hero__inner{
+  .hero__inner {
     display: flex;
     flex-direction: column;
   }
 
   /* spłaszczamy, aby top/bottom były rodzeństwem galerii */
-  .hero__content{
+  .hero__content {
     display: contents;
   }
 
   /* 1) */
-  .hero__content-top{
+  .hero__content-top {
     order: 1;
     margin-bottom: -62px;
   }
 
   /* 2) */
-  .hero__media{
+  .hero__media {
     order: 2;
     margin: 1.25rem 0;
   }
 
   /* 3) */
-  .hero__content-bottom{
+  .hero__content-bottom {
     order: 3;
   }
 }

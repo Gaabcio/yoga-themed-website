@@ -31,19 +31,19 @@ document.querySelectorAll('a[href^="#"]').forEach(link => {
 const yearEl = document.getElementById('year');
 if (yearEl) yearEl.textContent = String(new Date().getFullYear());
 
-// // Auto-scroll the carousel so the emphasized image is centered on mobile load.
-// document.addEventListener('DOMContentLoaded', () => {
-//   const gallery = document.querySelector('.hero-gallery');
-//   if (!gallery || window.matchMedia('(min-width: 768px)').matches) return;
+// Auto-scroll the carousel so the emphasized image is centered on mobile load.
+document.addEventListener('DOMContentLoaded', () => {
+  const gallery = document.querySelector('.hero-gallery');
+  if (!gallery || window.matchMedia('(min-width: 768px)').matches) return;
 
-//   const cards = gallery.querySelectorAll('.hg-card');
-//   if (cards.length < 2) return;
+  const cards = gallery.querySelectorAll('.hg-card');
+  if (cards.length < 2) return;
 
-//   const middle = cards[1];
-//   const center = middle.offsetLeft - (gallery.clientWidth - middle.offsetWidth) / 2;
+  const middle = cards[1];
+  const center = middle.offsetLeft - (gallery.clientWidth - middle.offsetWidth) / 2;
 
-//   requestAnimationFrame(() => {
-//     gallery.scrollLeft = Math.max(0, center);
-//   });
-// });
+  requestAnimationFrame(() => {
+    gallery.scrollLeft = Math.max(0, center);
+  });
+});
 
