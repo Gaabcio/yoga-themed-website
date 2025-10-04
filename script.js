@@ -51,29 +51,61 @@ document.addEventListener('DOMContentLoaded', function() {
   // Set current year in footer
   if (yearEl) yearEl.textContent = String(new Date().getFullYear());
 
-  // Center the middle hero image on mobile
-  function centerHeroImage() {
-    const gallery = document.querySelector('.hero-gallery');
-    if (gallery && window.matchMedia('(max-width: 767px)').matches) {
-      const middleCard = gallery.querySelector('.hg-card--emph');
-      if (middleCard) {
-        const galleryWidth = gallery.offsetWidth;
-        const cardWidth = middleCard.offsetWidth;
-        const cardLeft = middleCard.offsetLeft;
-
-        const scrollTarget = cardLeft - (galleryWidth - cardWidth) / 2;
-
-        gallery.scrollTo({
-          left: scrollTarget,
-          behavior: 'auto' // Use 'auto' for instant scrolling on load
-        });
-      }
+  // Toggle mobile menu
+  function toggleMobileMenu() {
+    const navMenu = document.querySelector('.nav-menu');
+    if (navMenu) {
+      navMenu.classList.toggle('active');
     }
   }
 
   // Run on load and on resize
-  centerHeroImage();
-  window.addEventListener('resize', centerHeroImage);
+  toggleMobileMenu();
+  window.addEventListener('resize', toggleMobileMenu);
+
+  // Back to top button visibility
+  const backToTopButton = document.querySelector('.back-to-top');
+
+  if (backToTopButton) {
+    window.addEventListener('scroll', () => {
+      if (window.scrollY > 300) {
+        backToTopButton.classList.add('visible');
+      } else {
+        backToTopButton.classList.remove('visible');
+      }
+    });
+  }
+
+  // Scrollspy for navigation links
+  const sections = document.querySelectorAll('section[id]');
+  const navLinks = document.querySelectorAll('.main-nav .nav-menu a[href^="#"]');
+  const headerHeight = document.querySelector('.site-header').offsetHeight;
+
+  function updateActiveLink() {
+    let currentSectionId = '';
+    const scrollPosition = window.scrollY + headerHeight + 60;
+
+    sections.forEach(section => {
+      const sectionTop = section.offsetTop;
+      const sectionHeight = section.offsetHeight;
+      const sectionBottom = sectionTop + sectionHeight;
+
+      if (scrollPosition >= sectionTop && scrollPosition < sectionBottom) {
+        currentSectionId = section.id;
+      }
+    });
+
+    if (window.innerHeight + window.scrollY >= document.body.offsetHeight - 1) {
+      currentSectionId = sections[sections.length - 1].id;
+    }
+
+    navLinks.forEach(link => {
+      link.classList.toggle('active', link.getAttribute('href') === `#${currentSectionId}`);
+    });
+  }
+
+  window.addEventListener('scroll', updateActiveLink);
+  updateActiveLink(); // Set initial state on load
 
   // Workshop carousel functionality
   const prevBtn = document.querySelector('.ws-btn.prev');
