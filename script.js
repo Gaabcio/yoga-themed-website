@@ -47,3 +47,50 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 });
 
+document.addEventListener('DOMContentLoaded', function() {
+  // Set current year in footer
+  if (yearEl) yearEl.textContent = String(new Date().getFullYear());
+
+  // Center the middle hero image on mobile
+  function centerHeroImage() {
+    const gallery = document.querySelector('.hero-gallery');
+    if (gallery && window.matchMedia('(max-width: 767px)').matches) {
+      const middleCard = gallery.querySelector('.hg-card--emph');
+      if (middleCard) {
+        const galleryWidth = gallery.offsetWidth;
+        const cardWidth = middleCard.offsetWidth;
+        const cardLeft = middleCard.offsetLeft;
+
+        const scrollTarget = cardLeft - (galleryWidth - cardWidth) / 2;
+
+        gallery.scrollTo({
+          left: scrollTarget,
+          behavior: 'auto' // Use 'auto' for instant scrolling on load
+        });
+      }
+    }
+  }
+
+  // Run on load and on resize
+  centerHeroImage();
+  window.addEventListener('resize', centerHeroImage);
+
+  // Workshop carousel functionality
+  const prevBtn = document.querySelector('.ws-btn.prev');
+  const nextBtn = document.querySelector('.ws-btn.next');
+  if (prevBtn && nextBtn) {
+    prevBtn.addEventListener('click', () => {
+      const gallery = document.querySelector('.hero-gallery');
+      if (gallery) {
+        gallery.scrollLeft -= 300;
+      }
+    });
+    nextBtn.addEventListener('click', () => {
+      const gallery = document.querySelector('.hero-gallery');
+      if (gallery) {
+        gallery.scrollLeft += 300;
+      }
+    });
+  }
+});
+
