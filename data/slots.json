@@ -1,7 +1,0 @@
-{
-  "mon-0800-poranek": { "capacity": 10, "booked": 0 },
-  "tue-1900-kregoslup": { "capacity": 10, "booked": 0 },
-  "wed-1900-kurs": { "capacity": 10, "booked": 0 },
-  "thu-0800-poranek": { "capacity": 10, "booked": 0 },
-  "thu-1900-kregoslup": { "capacity": 10, "booked": 0 }
-}
