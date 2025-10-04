@@ -232,11 +232,17 @@ a:hover {
   flex-wrap: wrap
 }
 
-@media (max-width: 900px) {
+@media (max-width: 490px) {
+  .hero__inner a{
+    margin: auto;
+  }
+}
+
+/* @media (max-width: 900px) {
   .hero__inner {
     grid-template-columns: 1fr
   }
-}
+} */
 
 .hero__media {
   min-height: auto
@@ -292,6 +298,33 @@ a:hover {
   height: 40vh;
   background: radial-gradient(50% 50% at 50% 50%, rgba(107, 155, 141, .18) 0%, rgba(107, 155, 141, 0) 70%);
   pointer-events: none;
+}
+
+/* Media query for mobile devices to reorder hero elements */
+@media (max-width: 767px) {
+  .hero__inner {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .hero__content {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .hero__content-top {
+    order: 1;
+  }
+  
+  .hero__media {
+    order: 2;
+    margin-bottom: 2rem;
+    margin-top: 2rem;
+  }
+  
+  .hero__content-bottom {
+    order: 3;
+  }
 }
 
 /* Cards / media */
@@ -800,4 +833,36 @@ a:hover {
   background: var(--grad-grey);
 }
 
-/* zajęcia indywidualne */
+/* Mobile: kolejność elementów w Hero
+   1) nagłówek + akapit
+   2) galeria 3 zdjęć
+   3) “Jestem Basia…” + CTA
+*/
+@media (max-width: 900px){
+  /* układ w jednej kolumnie */
+  .hero__inner{
+    display: flex;
+    flex-direction: column;
+  }
+
+  /* spłaszczamy, aby top/bottom były rodzeństwem galerii */
+  .hero__content{
+    display: contents;
+  }
+
+  /* 1) */
+  .hero__content-top{
+    order: 1;
+  }
+
+  /* 2) */
+  .hero__media{
+    order: 2;
+    margin: 1.25rem 0;
+  }
+
+  /* 3) */
+  .hero__content-bottom{
+    order: 3;
+  }
+}

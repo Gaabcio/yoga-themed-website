@@ -30,3 +30,4 @@ document.querySelectorAll('a[href^="#"]').forEach(link => {
 // Rok w stopce
 const yearEl = document.getElementById('year');
 if (yearEl) yearEl.textContent = String(new Date().getFullYear());
+
