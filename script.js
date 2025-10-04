@@ -63,6 +63,23 @@ document.addEventListener('DOMContentLoaded', function() {
   toggleMobileMenu();
   window.addEventListener('resize', toggleMobileMenu);
 
+  // Center hero image on mobile
+  function centerHeroImage() {
+    if (window.matchMedia('(max-width: 767px)').matches) {
+      const gallery = document.querySelector('.hero-gallery');
+      const middleCard = gallery.querySelector('.hg-card--emph');
+      if (gallery && middleCard) {
+        const scrollTarget = middleCard.offsetLeft - (gallery.offsetWidth - middleCard.offsetWidth) / 2;
+        gallery.scrollTo({
+          left: scrollTarget,
+          behavior: 'auto'
+        });
+      }
+    }
+  }
+  centerHeroImage();
+  window.addEventListener('resize', centerHeroImage);
+
   // Back to top button visibility
   const backToTopButton = document.querySelector('.back-to-top');
 
