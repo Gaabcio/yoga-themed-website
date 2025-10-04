@@ -77,7 +77,9 @@ document.addEventListener('DOMContentLoaded', function() {
       }
     }
   }
-  centerHeroImage();
+
+  // Run after all content (including images) is loaded
+  window.addEventListener('load', centerHeroImage);
   window.addEventListener('resize', centerHeroImage);
 
   // Back to top button visibility
