@@ -399,14 +399,20 @@ a:hover {
 
 .class-tile {
   display: grid;
-  grid-template-columns: auto 1fr;
-  gap: .75rem;
+  gap: .5rem;
   background: #fff;
   border-radius: 14px;
   padding: .85rem .95rem;
   border: 1px solid var(--border);
   box-shadow: 0 8px 20px rgba(0, 0, 0, .06);
   margin: .6rem 0;
+}
+
+/* NOWE STYLE */
+.class-header {
+  display: flex;
+  align-items: center;
+  gap: .75rem;
 }
 
 .class-time time {
@@ -455,7 +461,6 @@ a:hover {
 /* Wolne miejsca (badge + WA) */
 .slot-meta {
   display: flex;
-  gap: .6rem;
   align-items: center;
   flex-wrap: wrap;
   margin-top: .45rem
