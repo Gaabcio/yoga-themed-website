@@ -301,7 +301,7 @@ a:hover {
 }
 
 /* Media query for mobile devices to reorder hero elements */
-/* @media (max-width: 767px) {
+@media (max-width: 767px) {
   .hero__inner {
     display: flex;
     flex-direction: column;
@@ -325,23 +325,7 @@ a:hover {
   .hero__content-bottom {
     order: 3;
   }
-
-  .hero-gallery {
-    display: flex;
-  }
-
-  .hero-gallery .hg-card:nth-child(2) {
-    order: 1;
-  }
-
-  .hero-gallery .hg-card:nth-child(1) {
-    order: 2;
-  }
-
-  .hero-gallery .hg-card:nth-child(3) {
-    order: 3;
-  }
-} */
+}
 
 /* Cards / media */
 .media-card {
