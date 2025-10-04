@@ -879,7 +879,6 @@ a:hover {
   width: 42px;
   height: 42px;
   border-radius: 50%;
-  background: var(--primary) url(up-arrow.png) center/60% no-repeat;
   color: #fff;
   display: grid;
   place-items: center;
