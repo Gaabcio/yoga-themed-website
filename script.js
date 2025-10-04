@@ -31,25 +31,19 @@ document.querySelectorAll('a[href^="#"]').forEach(link => {
 const yearEl = document.getElementById('year');
 if (yearEl) yearEl.textContent = String(new Date().getFullYear());
 
-// Warsztaty — prosta karuzela
-(function workshopsCarousel(){
-  const viewport = document.querySelector('.ws-viewport');
-  const track = document.querySelector('.ws-track');
-  const prev = document.querySelector('.ws-btn.prev');
-  const next = document.querySelector('.ws-btn.next');
-  if (!viewport || !track) return;
-  let index = 0;
-  const slides = Array.from(track.children);
-  function update(){ track.style.transform = `translateX(-${index * 100}%)`; }
-  function go(delta){ index = (index + delta + slides.length) % slides.length; update(); }
-  prev && prev.addEventListener('click', () => go(-1));
-  next && next.addEventListener('click', () => go(1));
-})();
-
-// Wolne miejsca — pobieranie i wyświetlanie
+// Wolne miejsca — pobieranie i (opcjonalnie) tryb admin
 (async function slots(){
+  const params = new URLSearchParams(location.search);
+  const isAdmin = params.get('admin') === '1';
+
   const BADGES = document.querySelectorAll('[data-slot]');
-  if (!BADGES.length) return;
+  if (!BADGES.length) {
+    if (isAdmin) {
+      alert('Tryb admin jest włączony, ale na tej stronie nie znaleziono żadnych liczników (data-slot). Upewnij się, że w grafiku są elementy <span class="badge" data-slot="...">.');
+    }
+    console.warn('[slots] Brak elementów [data-slot] na stronie.');
+    return;
+  }
 
   async function fetchJSON(url){
     const res = await fetch(url, { cache: 'no-store' });
@@ -59,28 +53,26 @@ if (yearEl) yearEl.textContent = String(new Date().getFullYear());
 
   let data = null;
   try {
-    // Najpierw próbuj przez PHP API
     data = await fetchJSON('api/slots.php?action=get');
-  } catch {
-    // Fallback do statycznego pliku (do podmiany ręcznej lub jeśli PHP nie działa)
-    try { data = await fetchJSON('data/slots.json'); } catch {}
+  } catch (e) {
+    console.warn('[slots] API niedostępne, próba wczytania data/slots.json. Powód:', e);
+    try { data = await fetchJSON('data/slots.json'); }
+    catch (e2) { console.error('[slots] Nie udało się pobrać danych slotów:', e2); }
   }
   if (!data) return;
 
-  const map = new Map(Object.entries(data)); // key -> {capacity, booked}
+  const map = new Map(Object.entries(data));
   BADGES.forEach(el => {
     const key = el.getAttribute('data-slot');
     const rec = map.get(key);
     if (!rec) { el.textContent = 'Wolne: —'; return; }
     const free = Math.max(0, (rec.capacity ?? 0) - (rec.booked ?? 0));
     el.textContent = `Wolne: ${free} / ${rec.capacity}`;
-    if (free <= 2) el.style.background = '#fff3cd'; // soft warning
+    if (free <= 2) el.style.background = '#fff3cd';
     if (free === 0) { el.style.background = '#ffe0e0'; el.style.color = '#991b1b'; }
   });
 
-  // Tryb admin: ?admin=1 — pokaż przyciski +/- i aktualizuj przez PHP z tokenem
-  const params = new URLSearchParams(location.search);
-  if (params.get('admin') === '1') {
+  if (isAdmin) {
     const token = prompt('Podaj token administracyjny (ustawiony w api/slots.php):');
     if (!token) return;
 
@@ -92,7 +84,7 @@ if (yearEl) yearEl.textContent = String(new Date().getFullYear());
       minus.textContent = '−'; plus.textContent = '+';
       [minus, plus].forEach(b => {
         b.type = 'button';
-        b.style.cssText = 'border:1px solid #d1d5db;border-radius:8px;padding:0 .5rem;height:28px;background:#fff;cursor:pointer';
+        b.style.cssText = 'border:1px solid #d1d5db;border-radius:8px;padding:0 .5rem;height:28px;background:#fff;cursor:pointer;margin-left:4px';
       });
       wrap?.appendChild(minus); wrap?.appendChild(plus);
 
@@ -103,9 +95,8 @@ if (yearEl) yearEl.textContent = String(new Date().getFullYear());
             headers: {'Content-Type':'application/json'},
             body: JSON.stringify({ token, key, delta })
           });
-          const json = await res.json();
-          if (!res.ok) throw new Error(json?.error || 'Błąd');
-          // odśwież badge
+          const json = await res.json().catch(()=>({}));
+          if (!res.ok) throw new Error(json?.error || 'Błąd zapisu');
           const rec = json[key];
           const free = Math.max(0, (rec.capacity ?? 0) - (rec.booked ?? 0));
           el.textContent = `Wolne: ${free} / ${rec.capacity}`;
