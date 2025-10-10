@@ -13,7 +13,7 @@
     href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;700&family=Inter:wght@400;500;600&display=swap"
     rel="stylesheet" />
   <link rel="stylesheet" href="styles.css" />
-  <link rel="icon" href="logo.png" type="image/png">
+  <link rel="icon" href="pictures/logo.png" type="image/png">
 </head>
 
 <body>
@@ -21,7 +21,7 @@
   <header class="site-header" id="top">
     <div class="container nav">
       <a href="#top" class="brand" aria-label="Strona główna">
-        <img src="logo1.png" alt="Logo" width="160" height="60" />
+        <img src="pictures/logo1.png" alt="Logo"/>
       </a>
       <nav class="main-nav" aria-label="Główna nawigacja">
         <button class="nav-toggle" aria-expanded="false" aria-controls="nav-menu" aria-label="Otwórz menu">
@@ -52,7 +52,7 @@
     <div class="container hero__inner">
       <div class="hero__content">
         <div class="hero__content-top">
-          <h1>Poczuj spokój i równowagę</h1>
+          <h1>Poczuj spokój i&nbsp;równowagę</h1>
           <p>Dopasowane do potrzeb, kameralne praktyki jogi w Budzyniu. Zatrzymaj się, odetchnij i zadbaj o swoje ciało
             oraz umysł.</p>
         </div>
@@ -68,16 +68,16 @@
         </div>
       </div>
       <div class="hero__media" aria-hidden="true">
+        <div class="hg-card">
+          <img src="pictures/1strona.jpg" alt="Joga na świeżym powietrzu" loading="lazy">
+        </div>
         <div class="hero-gallery">
-          <div class="hg-card">
-            <img src="hero-3.jpg" alt="Joga na świeżym powietrzu" loading="lazy">
-          </div>
-          <div class="hg-card hg-card--emph">
-            <img src="hero-2.jpg" alt="Instruktorka jogi Basia" loading="lazy">
+          <!-- <div class="hg-card hg-card--emph">
+            <img src="pictures/hero-2.jpg" alt="Instruktorka jogi Basia" loading="lazy">
           </div>
           <div class="hg-card">
-            <img src="hero-1.jpg" alt="Pozycja drzewa w jodze" loading="lazy">
-          </div>
+            <img src="pictures/hero-1.jpg" alt="Pozycja drzewa w jodze" loading="lazy">
+          </div> -->
         </div>
       </div>
     </div>
@@ -171,7 +171,7 @@
               </div>
             </div>
           </article>
-          
+
           <article class="class-tile class--neutral">
             <div class="class-header">
               <div class="class-time"><time datetime="19:00">19:00</time></div>
@@ -233,7 +233,7 @@
   </section>
 
   <!-- Cennik -->
-  <section id="cennik" class="section">
+  <section id="cennik" class="section section--alt">
     <div class="container">
       <h2>Cennik</h2>
 
@@ -270,7 +270,8 @@
             <br>
             <li>W przypadku nieobecności na zajęciach z powodów losowych uczestnik ma prawo odrobienia zajęć w innej
               grupie w ramach danego miesiąca lub następnego gdy są miejsca na sali , ale tylko w przypadku
-              <strong>zgłoszenia swojej nieobecności dzień wcześniej. W innym przypadku zajęcia przepadają.</strong></li>
+              <strong>zgłoszenia swojej nieobecności dzień wcześniej. W innym przypadku zajęcia przepadają.</strong>
+            </li>
 
             <br>
             <li>Każdy z uczestników rozpoczynający zajęcia podpisuje regulamin uczestnictwa i płatności na osobnym
@@ -296,14 +297,14 @@
             Seniorów.</p>
         </div>
         <figure class="about-media media-card">
-          <img src="zdj1.jpg" alt="Praktyka jogi — wprowadzenie" loading="lazy">
+          <img src="pictures/omnie.jpg" style="width: 270px;" alt="Praktyka jogi — wprowadzenie" loading="lazy">
         </figure>
       </div>
 
       <!-- Rząd 2: obraz lewo, tekst prawo -->
       <div class="about-row">
         <figure class="about-media media-card">
-          <img src="zdj2.jpg" alt="Zajęcia w kameralnej grupie" loading="lazy">
+          <img src="pictures/Basiairoze.jpg" alt="Zajęcia w kameralnej grupie" loading="lazy">
         </figure>
         <div class="about-text">
           <h3>Moje podejście do nauczania</h3>
@@ -324,24 +325,12 @@
     <div class="container">
       <h2>Warsztaty</h2>
       <div class="workshop-carousel">
-        <button class="ws-btn prev" aria-label="Poprzednie">‹</button>
+        <button class="ws-btn prev" type="button" aria-label="Poprzednie">‹</button>
         <div class="ws-viewport">
-          <div class="ws-track">
-            <figure class="ws-slide"><img
-                src="https://images.unsplash.com/photo-1516375199442-2b3c77c7e6a3?q=80&w=1600&auto=format&fit=crop"
-                alt="Warsztat — 1"></figure>
-            <figure class="ws-slide"><img
-                src="https://images.unsplash.com/photo-1506126613408-eca07ce68773?q=80&w=1600&auto=format&fit=crop"
-                alt="Warsztat — 2"></figure>
-            <figure class="ws-slide"><img
-                src="https://images.unsplash.com/photo-1534361960057-19889db9621e?q=80&w=1600&auto=format&fit=crop"
-                alt="Warsztat — 3"></figure>
-            <figure class="ws-slide"><img
-                src="https://images.unsplash.com/photo-1526404428533-28e07a39d33a?q=80&w=1600&auto=format&fit=crop"
-                alt="Warsztat — 4"></figure>
+          <div class="ws-track">             
           </div>
         </div>
-        <button class="ws-btn next" aria-label="Następne">›</button>
+        <button class="ws-btn next" type="button" aria-label="Następne">›</button>
       </div>
     </div>
   </section>

@@ -63,24 +63,6 @@ document.addEventListener('DOMContentLoaded', function() {
   toggleMobileMenu();
   window.addEventListener('resize', toggleMobileMenu);
 
-  // Center hero image on mobile
-  function centerHeroImage() {
-    if (window.matchMedia('(max-width: 767px)').matches) {
-      const gallery = document.querySelector('.hero-gallery');
-      const middleCard = gallery.querySelector('.hg-card--emph');
-      if (gallery && middleCard) {
-        const scrollTarget = middleCard.offsetLeft - (gallery.offsetWidth - middleCard.offsetWidth) / 2;
-        gallery.scrollTo({
-          left: scrollTarget,
-          behavior: 'auto'
-        });
-      }
-    }
-  }
-
-  // Run after all content (including images) is loaded
-  window.addEventListener('load', centerHeroImage);
-  window.addEventListener('resize', centerHeroImage);
 
   // Back to top button visibility
   const backToTopButton = document.querySelector('.back-to-top');
@@ -126,22 +108,86 @@ document.addEventListener('DOMContentLoaded', function() {
   window.addEventListener('scroll', updateActiveLink);
   updateActiveLink(); // Set initial state on load
 
-  // Workshop carousel functionality
+});
+
+// Warsztaty — ładowanie zdjęć i w pełni działający slider z automatem i aspect-ratio
+(function() {
+  const track = document.querySelector('.ws-track');
+  const viewport = document.querySelector('.ws-viewport');
   const prevBtn = document.querySelector('.ws-btn.prev');
   const nextBtn = document.querySelector('.ws-btn.next');
-  if (prevBtn && nextBtn) {
-    prevBtn.addEventListener('click', () => {
-      const gallery = document.querySelector('.hero-gallery');
-      if (gallery) {
-        gallery.scrollLeft -= 300;
-      }
-    });
-    nextBtn.addEventListener('click', () => {
-      const gallery = document.querySelector('.hero-gallery');
-      if (gallery) {
-        gallery.scrollLeft += 300;
-      }
-    });
+  if (!track || !viewport) return;
+  const imageCount = 27; // Zmień na liczbę zdjęć w folderze
+  let slidesHtml = '';
+  for (let i = 1; i <= imageCount; i++) {
+    slidesHtml += `<figure class="ws-slide"><img src="pictures/lessons/zdjecie (${i}).jpg" alt="Warsztat — ${i}"></figure>`;
   }
-});
+  track.innerHTML = slidesHtml;
+
+  const slides = Array.from(track.children);
+  let current = 0;
+  let interval = null;
+
+  function isMobile() {
+    return window.innerWidth <= 700;
+  }
+
+  function getCurrentIndex() {
+    if (isMobile()) {
+      const slideWidth = viewport.offsetWidth;
+      return Math.round(viewport.scrollLeft / slideWidth);
+    } else {
+      return current;
+    }
+  }
+
+  function goToSlide(idx) {
+    current = (idx + slides.length) % slides.length;
+    const imgs = track.querySelectorAll('img');
+    const img = imgs[current];
+    if (isMobile()) {
+      const slideWidth = viewport.offsetWidth;
+      viewport.scrollTo({ left: slideWidth * current, behavior: 'smooth' });
+    } else {
+      track.style.transform = 'translateX(-' + (100 * current) + '%)';
+    }
+  }
+
+  function nextSlide() {
+    current = getCurrentIndex();
+    goToSlide(current + 1);
+  }
+  function prevSlide() {
+    current = getCurrentIndex();
+    goToSlide(current - 1);
+  }
+
+  function startAuto() {
+    if (interval) { clearInterval(interval); }
+    interval = setInterval(nextSlide, 2500);
+  }
+  function stopAuto() {
+    if (interval) { clearInterval(interval); }
+  }
+
+  window.addEventListener('resize', function() { goToSlide(current); });
+  viewport.addEventListener('mouseenter', stopAuto);
+  viewport.addEventListener('mouseleave', startAuto);
+  viewport.addEventListener('touchstart', stopAuto);
+  viewport.addEventListener('touchend', startAuto);
+  if (prevBtn && nextBtn) {
+    prevBtn.addEventListener('click', prevSlide);
+    nextBtn.addEventListener('click', nextSlide);
+  }
+
+  // Synchronizuj current z aktualnym slajdem przy scrollu na mobile
+  viewport.addEventListener('scroll', function() {
+    if (isMobile()) {
+      current = getCurrentIndex();
+    }
+  });
+
+  goToSlide(0);
+  startAuto();
+})();
 
