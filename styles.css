@@ -280,7 +280,19 @@ a:hover { text-decoration: none; }
 /* Footer */
 .site-footer{ border-top:1px solid var(--border); padding:1.2rem 0; background:#fff }
 .footer__inner{ display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:.8rem }
+.footer-left{ display:flex; flex-direction:column; gap:.5rem }
+.footer-links{ display:flex; gap:1rem }
+.footer-link{ 
+  color:var(--muted); font-size:.9rem; transition:color .3s ease;
+  border-bottom:1px solid transparent; padding-bottom:2px;
+}
+.footer-link:hover{ color:var(--primary); border-bottom-color:var(--primary) }
 .socials{ margin-right: 15dvh; }
+
+@media (max-width:600px){
+  .footer__inner{ flex-direction:column; align-items:flex-start }
+  .socials{ margin-right:0 }
+}
 
 /* Helpers */
 .center{ text-align:center }
