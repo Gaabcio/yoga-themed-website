@@ -161,33 +161,4 @@ document.addEventListener('DOMContentLoaded', function() {
     current = getCurrentIndex();
     goToSlide(current - 1);
   }
-
-  function startAuto() {
-    if (interval) { clearInterval(interval); }
-    interval = setInterval(nextSlide, 2500);
-  }
-  function stopAuto() {
-    if (interval) { clearInterval(interval); }
-  }
-
-  window.addEventListener('resize', function() { goToSlide(current); });
-  viewport.addEventListener('mouseenter', stopAuto);
-  viewport.addEventListener('mouseleave', startAuto);
-  viewport.addEventListener('touchstart', stopAuto);
-  viewport.addEventListener('touchend', startAuto);
-  if (prevBtn && nextBtn) {
-    prevBtn.addEventListener('click', prevSlide);
-    nextBtn.addEventListener('click', nextSlide);
-  }
-
-  // Synchronizuj current z aktualnym slajdem przy scrollu na mobile
-  viewport.addEventListener('scroll', function() {
-    if (isMobile()) {
-      current = getCurrentIndex();
-    }
-  });
-
-  goToSlide(0);
-  startAuto();
 })();
-
