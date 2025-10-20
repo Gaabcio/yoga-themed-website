@@ -300,4 +300,35 @@ document.addEventListener('DOMContentLoaded', function() {
       }
     });
   });
+
+  let touchStartX = null;
+  let touchEndX = null;
+
+  // Dodaj obsługę swipe w modalu
+  modal.addEventListener('touchstart', function(e) {
+    if (e.touches.length === 1) {
+      touchStartX = e.touches[0].clientX;
+    }
+  });
+
+  modal.addEventListener('touchmove', function(e) {
+    if (e.touches.length === 1) {
+      touchEndX = e.touches[0].clientX;
+    }
+  });
+
+  modal.addEventListener('touchend', function(e) {
+    if (touchStartX !== null && touchEndX !== null) {
+      const deltaX = touchEndX - touchStartX;
+      if (Math.abs(deltaX) > 50) { // minimalny dystans do uznania za swipe
+        if (deltaX > 0 && currentIndex > 0) {
+          showImage(currentIndex - 1, 'left'); // swipe w prawo — poprzednie
+        } else if (deltaX < 0 && currentIndex < allImages.length - 1) {
+          showImage(currentIndex + 1, 'right'); // swipe w lewo — następne
+        }
+      }
+    }
+    touchStartX = null;
+    touchEndX = null;
+  });
 })();
