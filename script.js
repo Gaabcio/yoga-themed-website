@@ -162,3 +162,142 @@ document.addEventListener('DOMContentLoaded', function() {
     goToSlide(current - 1);
   }
 })();
+
+// Modal dla galerii zdjęć
+(function() {
+  const modal = document.getElementById('imageModal');
+  const modalImg = document.getElementById('modalImage');
+  const modalCaption = document.getElementById('modalCaption');
+  const closeBtn = document.querySelector('.modal-close');
+  const prevBtn = document.querySelector('.modal-arrow--prev');
+  const nextBtn = document.querySelector('.modal-arrow--next');
+  
+  let allImages = [];
+  let currentIndex = 0;
+
+  // Zbierz wszystkie zdjęcia z galerii
+  function updateImagesList() {
+    allImages = Array.from(document.querySelectorAll('.gallery-grid img'));
+  }
+
+  // Pokaż zdjęcie o danym indeksie z animacją przesuwania
+  function showImage(index, direction) {
+    if (index < 0 || index >= allImages.length) return;
+
+    if (typeof direction === 'string') {
+      // Tworzymy nowy obrazek do animacji
+      const newImg = document.createElement('img');
+      newImg.className = 'modal-content animating';
+      newImg.src = allImages[index].src;
+      newImg.alt = allImages[index].alt;
+      // newImg.style.position = 'absolute';
+      // newImg.style.top = '0';
+      newImg.style.left = direction === 'left' ? '-100%' : '100%';
+      newImg.style.width = '100%';
+      newImg.style.transition = 'left 0.35s';
+
+      // Stary obrazek
+      modalImg.style.position = 'absolute';
+      modalImg.style.left = '0';
+      modalImg.style.transition = 'left 0.35s';
+
+      // Dodaj nowy obrazek do modalu
+      modalImg.parentNode.appendChild(newImg);
+
+      // Wywołaj animację
+      setTimeout(() => {
+        modalImg.style.left = direction === 'left' ? '100%' : '-100%';
+        newImg.style.left = '0';
+      }, 10);
+
+      // Po animacji podmień obrazek
+      setTimeout(() => {
+        modalImg.src = newImg.src;
+        modalImg.alt = newImg.alt;
+        modalImg.style.position = '';
+        modalImg.style.left = '';
+        modalImg.style.transition = '';
+        newImg.remove();
+        modalCaption.textContent = allImages[index].alt;
+        prevBtn.disabled = index === 0;
+        nextBtn.disabled = index === allImages.length - 1;
+        currentIndex = index;
+      }, 360);
+    } else {
+      // Bez animacji, normalnie
+      modalImg.src = allImages[index].src;
+      modalImg.alt = allImages[index].alt;
+      modalCaption.textContent = allImages[index].alt;
+      prevBtn.disabled = index === 0;
+      nextBtn.disabled = index === allImages.length - 1;
+      currentIndex = index;
+    }
+  }
+
+  // Dodaj event listener do wszystkich zdjęć w galeriach
+  function attachImageListeners() {
+    updateImagesList();
+    allImages.forEach((img, index) => {
+      img.addEventListener('click', function() {
+        modal.classList.add('active');
+        modal.setAttribute('aria-hidden', 'false');
+        document.body.style.overflow = 'hidden';
+        showImage(index);
+      });
+    });
+  }
+
+  // Inicjalizacja
+  attachImageListeners();
+
+  // Poprzednie zdjęcie
+  prevBtn.addEventListener('click', function() {
+    if (currentIndex > 0) {
+      showImage(currentIndex - 1, 'left');
+    }
+  });
+
+  // Następne zdjęcie
+  nextBtn.addEventListener('click', function() {
+    if (currentIndex < allImages.length - 1) {
+      showImage(currentIndex + 1, 'right');
+    }
+  });
+
+  // Zamknij modal
+  function closeModal() {
+    modal.classList.remove('active');
+    modal.setAttribute('aria-hidden', 'true');
+    document.body.style.overflow = '';
+  }
+
+  closeBtn.addEventListener('click', closeModal);
+
+  // Zamknij po kliknięciu poza zdjęciem
+  modal.addEventListener('click', function(e) {
+    if (e.target === modal) {
+      closeModal();
+    }
+  });
+
+  // Obsługa klawiatury
+  document.addEventListener('keydown', function(e) {
+    if (!modal.classList.contains('active')) return;
+    if (e.key === 'Escape') {
+      closeModal();
+    } else if (e.key === 'ArrowLeft') {
+      if (currentIndex > 0) showImage(currentIndex - 1, 'left');
+    } else if (e.key === 'ArrowRight') {
+      if (currentIndex < allImages.length - 1) showImage(currentIndex + 1, 'right');
+    }
+  });
+
+  // Aktualizuj listę zdjęć gdy otwierają się nowe galerie
+  document.querySelectorAll('.gallery-group').forEach(group => {
+    group.addEventListener('toggle', function() {
+      if (this.open) {
+        setTimeout(attachImageListeners, 100);
+      }
+    });
+  });
+})();

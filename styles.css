@@ -419,3 +419,150 @@ a:hover { text-decoration: none; }
   margin: auto;
   display: block;
 }
+
+/* Modal dla galerii */
+.image-modal {
+  display: none;
+  position: fixed;
+  z-index: 10000;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: rgba(0, 0, 0, 0.9);
+  animation: fadeIn 0.3s;
+}
+
+.image-modal.active {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.modal-content {
+  max-width: 90%;
+  max-height: 90vh;
+  object-fit: contain;
+  animation: zoomIn 0.3s;
+}
+/* .modal-content {
+  transition: transform 0.3s;
+}
+.modal-content.slide-left {
+  transform: translateX(-60px);
+}
+.modal-content.slide-right {
+  transform: translateX(60px);
+} */
+.image-modal .modal-content {
+  position: relative;
+  width: 100%;
+  display: block;
+}
+
+.modal-close {
+  position: absolute;
+  top: 20px;
+  right: 35px;
+  color: #fff;
+  font-size: 40px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: 0.3s;
+  z-index: 10001;
+}
+
+.modal-close:hover,
+.modal-close:focus {
+  color: #bbb;
+}
+
+.modal-arrow {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: rgba(255, 255, 255, 0.1);
+  border: 2px solid rgba(255, 255, 255, 0.3);
+  color: #fff;
+  font-size: 40px;
+  padding: 10px 20px;
+  cursor: pointer;
+  transition: all 0.3s;
+  border-radius: 8px;
+  z-index: 10001;
+  user-select: none;
+}
+
+.modal-arrow:hover {
+  background: rgba(255, 255, 255, 0.2);
+  border-color: rgba(255, 255, 255, 0.5);
+}
+
+.modal-arrow--prev {
+  left: 20px;
+}
+
+.modal-arrow--next {
+  right: 20px;
+}
+
+.modal-arrow:disabled {
+  opacity: 0.3;
+  cursor: not-allowed;
+}
+
+.modal-caption {
+  position: absolute;
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  color: #fff;
+  text-align: center;
+  padding: 10px 20px;
+  background: rgba(0, 0, 0, 0.5);
+  border-radius: 8px;
+}
+
+.gallery-grid img {
+  cursor: pointer;
+  transition: transform 0.3s, opacity 0.3s;
+}
+
+.gallery-grid img:hover {
+  transform: scale(1.05);
+  opacity: 0.9;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes zoomIn {
+  from { transform: scale(0.5); }
+  to { transform: scale(1); }
+}
+
+/* Responsywność dla mobilnych */
+@media (max-width: 768px) {
+  .modal-arrow {
+    font-size: 30px;
+    padding: 8px 15px;
+  }
+  
+  .modal-arrow--prev {
+    left: 10px;
+  }
+  
+  .modal-arrow--next {
+    right: 10px;
+  }
+  
+  .modal-close {
+    top: 10px;
+    right: 15px;
+    font-size: 35px;
+  }
+}

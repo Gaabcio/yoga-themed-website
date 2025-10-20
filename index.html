@@ -351,6 +351,7 @@
   <section id="warsztaty" class="section section--alt">
     <div class="container">
       <h2>Warsztaty</h2>
+      <!--       
       <div class="workshop-carousel">
         <button class="ws-btn prev" type="button" aria-label="Poprzednie">‹</button>
         <div class="ws-viewport">
@@ -358,31 +359,49 @@
           </div>
         </div>
         <button class="ws-btn next" type="button" aria-label="Następne">›</button>
-      </div>
+      </div> -->
       <!-- Galerie tematyczne -->
       <div class="gallery-list mt-1">
         <details class="gallery-group" open>
           <summary>GOA grudzień 2024 — "Mikołajki na Goa"</summary>
           <div class="gallery-grid">
-            <img src="pictures/gallery/goa1.jpg" alt="Goa 1" loading="lazy">
-            <img src="pictures/gallery/goa2.jpg" alt="Goa 2" loading="lazy">
-            <img src="pictures/gallery/goa3.jpg" alt="Goa 3" loading="lazy">
+            <img src="pictures/workshop/mikolajki/mikolajki (1).jpg" alt="Goa 1" loading="lazy">
+            <img src="pictures/workshop/mikolajki/mikolajki (2).jpg" alt="Goa 2" loading="lazy">
+            <img src="pictures/workshop/mikolajki/mikolajki (3).jpg" alt="Goa 3" loading="lazy">
+            <img src="pictures/workshop/mikolajki/mikolajki (4).jpg" alt="Goa 4" loading="lazy">
+            <img src="pictures/workshop/mikolajki/mikolajki (5).jpg" alt="Goa 5" loading="lazy">
+            <img src="pictures/workshop/mikolajki/mikolajki (6).jpg" alt="Goa 6" loading="lazy">
+            <img src="pictures/workshop/mikolajki/mikolajki (7).jpg" alt="Goa 7" loading="lazy">
+            <img src="pictures/workshop/mikolajki/mikolajki (8).jpg" alt="Goa 8" loading="lazy">
+            <img src="pictures/workshop/mikolajki/mikolajki (9).jpg" alt="Goa 9" loading="lazy">
+            <img src="pictures/workshop/mikolajki/mikolajki (10).jpg" alt="Goa 10" loading="lazy">
+            <img src="pictures/workshop/mikolajki/mikolajki (11).jpg" alt="Goa 11" loading="lazy">
+
           </div>
         </details>
         <details class="gallery-group">
           <summary>Djerba maj 2025</summary>
           <div class="gallery-grid">
-            <img src="pictures/gallery/djerba1.jpg" alt="Djerba 1" loading="lazy">
-            <img src="pictures/gallery/djerba2.jpg" alt="Djerba 2" loading="lazy">
-            <img src="pictures/gallery/djerba3.jpg" alt="Djerba 3" loading="lazy">
+            <img src="pictures/workshop/djerba/djerba (1).jpg" alt="Djerba 1" loading="lazy">
+            <img src="pictures/workshop/djerba/djerba (2).jpg" alt="Djerba 2" loading="lazy">  
+            <img src="pictures/workshop/djerba/djerba (3).jpg" alt="Djerba 3" loading="lazy">
+            <img src="pictures/workshop/djerba/djerba (4).jpg" alt="Djerba 4" loading="lazy">
+            <img src="pictures/workshop/djerba/djerba (5).jpg" alt="Djerba 5" loading="lazy">
+            <img src="pictures/workshop/djerba/djerba (6).jpg" alt="Djerba 6" loading="lazy">
+            <img src="pictures/workshop/djerba/djerba (7).jpg" alt="Djerba 7" loading="lazy">
           </div>
         </details>
         <details class="gallery-group">
           <summary>Joga w plenerze czerwiec, lipiec, sierpień 2025 — "Lato z jogą na trawie"</summary>
           <div class="gallery-grid">
-            <img src="pictures/gallery/plener1.jpg" alt="Plener 1" loading="lazy">
-            <img src="pictures/gallery/plener2.jpg" alt="Plener 2" loading="lazy">
-            <img src="pictures/gallery/plener3.jpg" alt="Plener 3" loading="lazy">
+            <img src="pictures/workshop/joga-w-plenerze/joga (1).jpg" alt="Plener 1" loading="lazy">
+            <img src="pictures/workshop/joga-w-plenerze/joga (2).jpg" alt="Plener 2" loading="lazy">
+            <img src="pictures/workshop/joga-w-plenerze/joga (3).jpg" alt="Plener 3" loading="lazy">
+            <img src="pictures/workshop/joga-w-plenerze/joga (4).jpg" alt="Plener 4" loading="lazy">
+            <img src="pictures/workshop/joga-w-plenerze/joga (5).jpg" alt="Plener 5" loading="lazy">
+            <img src="pictures/workshop/joga-w-plenerze/joga (6).jpg" alt="Plener 6" loading="lazy">
+            <img src="pictures/workshop/joga-w-plenerze/joga (7).jpg" alt="Plener 7" loading="lazy">
+            <img src="pictures/workshop/joga-w-plenerze/joga (8).jpg" alt="Plener 8" loading="lazy">
           </div>
         </details>
       </div>
@@ -472,6 +491,15 @@
     href="https://wa.me/48515463042?text=Cze%C5%9B%C4%87%2C%20chc%C4%99%20zapisa%C4%87%20si%C4%99%20na%20zaj%C4%99cia%20jogi.%20Prosz%C4%99%20o%20szczeg%C3%B3%C5%82y."
     aria-label="Otwórz czat WhatsApp">
   </a>
+
+  <!-- Modal dla powiększonych zdjęć -->
+  <div id="imageModal" class="image-modal" aria-hidden="true">
+    <span class="modal-close" aria-label="Zamknij">&times;</span>
+    <button class="modal-arrow modal-arrow--prev" aria-label="Poprzednie zdjęcie">‹</button>
+    <button class="modal-arrow modal-arrow--next" aria-label="Następne zdjęcie">›</button>
+    <img class="modal-content" id="modalImage" alt="">
+    <div class="modal-caption" id="modalCaption"></div>
+  </div>
 
   <a class="back-to-top" href="#hero" aria-label="Powrót na górę strony">↑</a>
 
