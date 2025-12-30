@@ -332,3 +332,140 @@ document.addEventListener('DOMContentLoaded', function() {
     touchEndX = null;
   });
 })();
+
+// Formularz opinii: (wersja bez natychmiastowego dodawania na stronę ani zapisu localStorage)
+(function(){
+  const form = document.getElementById('reviewForm');
+  if (!form) return;
+
+  const starsBox = form.querySelector('.stars');
+  const starButtons = Array.from(form.querySelectorAll('.star-btn'));
+  const ratingInput = form.querySelector('#ratingValue');
+  const nameInput = form.querySelector('#reviewName');
+  const emailInput = form.querySelector('#reviewEmail');
+  const textInput = form.querySelector('#reviewText');
+  const consentInput = form.querySelector('#reviewConsent');
+  const statusEl = form.querySelector('#reviewStatus');
+
+  function setStatus(msg, ok){
+    if(!statusEl) return;
+    statusEl.textContent = msg;
+    statusEl.classList.toggle('success', !!ok);
+    statusEl.classList.toggle('error', !ok);
+  }
+
+  function highlight(upTo){
+    starButtons.forEach(btn => {
+      const val = Number(btn.dataset.value || 0);
+      btn.classList.toggle('highlight', val <= upTo);
+    });
+  }
+
+  // Obsługa najechania i kliknięcia
+  starButtons.forEach(btn => {
+    btn.addEventListener('mouseenter', () => highlight(Number(btn.dataset.value)));
+    btn.addEventListener('focus', () => highlight(Number(btn.dataset.value)));
+    btn.addEventListener('mouseleave', () => highlight(Number(ratingInput.value||0)));
+    btn.addEventListener('blur', () => highlight(Number(ratingInput.value||0)));
+    btn.addEventListener('click', () => {
+      const value = Number(btn.dataset.value || 0);
+      ratingInput.value = String(value);
+      highlight(value);
+    });
+  });
+
+  // Usunięto: appendReviewCard, localStorage (opinia pojawia się dopiero po ręcznym dodaniu przez właściciela).
+
+  form.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    setStatus('', true);
+
+    const rating = Number(ratingInput.value || 0);
+    const name = nameInput.value.trim();
+    const email = emailInput.value.trim();
+    const message = textInput.value.trim();
+
+    if(!consentInput.checked){ setStatus('Zaznacz zgodę na publikację opinii.', false); return; }
+    if(!(rating >= 1 && rating <= 5)){ setStatus('Wybierz ocenę w skali 1–5.', false); return; }
+    if(name.length < 2){ setStatus('Podaj imię lub inicjały (min. 2 znaki).', false); return; }
+    if(message.length < 15){ setStatus('Napisz proszę nieco więcej (min. 15 znaków).', false); return; }
+
+  // Brak natychmiastowego dodania na stronę – tylko wysyłka.
+
+    // Opcjonalnie wyślij przez usługę e‑mail (Formspree / itp.)
+    // Podmień action na swój realny endpoint (w HTML jest placeholder)
+    const endpoint = form.getAttribute('action');
+    if (endpoint && endpoint.includes('formspree.io')){
+      try{
+        const formData = new FormData();
+        formData.append('rating', String(rating));
+        formData.append('name', name);
+        if(email) formData.append('email', email);
+        formData.append('message', message);
+        // formData.append('origin', location.href);
+        const hp = form.querySelector('input[name="website"]');
+        if (hp && hp.value) return; // honeypot filled, abort
+
+        const res = await fetch(endpoint, { method: 'POST', body: formData, headers: { 'Accept': 'application/json' }});
+        if(res.ok){
+          setStatus('Dziękujemy! Opinia została wysłana do właściciela strony (nie jest publikowana automatycznie).', true);
+          form.reset();
+          ratingInput.value = '0';
+          highlight(0);
+        } else {
+          setStatus('Błąd podczas wysyłania do właściciela – spróbuj ponownie później.', false);
+        }
+      }catch(err){
+        setStatus('Błąd sieci podczas wysyłania – spróbuj ponownie.', false);
+      }
+    } else {
+      setStatus('Formularz skonfigurowany bez endpointu – dodaj adres Formspree aby wysyłać opinie do właściciela.', false);
+      form.reset();
+      ratingInput.value = '0';
+      highlight(0);
+    }
+  });
+})();
+
+// Modal ogłoszenia na wejściu (pokazuj za każdym razem)
+(function() {
+  const modal = document.getElementById('announcement-modal');
+  if (!modal) return;
+
+  const overlay = modal.querySelector('.ann-modal__overlay');
+  const dialog = modal.querySelector('.ann-modal__dialog');
+  const closeEls = modal.querySelectorAll('[data-ann-close]');
+  const descEl = modal.querySelector('#ann-desc');
+  const titleEl = modal.querySelector('#ann-title');
+
+  function open() {
+    modal.classList.add('active');
+    modal.setAttribute('aria-hidden', 'false');
+    document.body.style.overflow = 'hidden';
+    // Przenieś focus do nagłówka wewnątrz dialogu
+    const focusable = dialog.querySelector('h3, button, a');
+    if (focusable) focusable.focus({ preventScroll: true });
+  }
+
+  function close() {
+    modal.classList.remove('active');
+    modal.setAttribute('aria-hidden', 'true');
+    document.body.style.overflow = '';
+    try { sessionStorage.setItem(dismissedKey, '1'); } catch (e) {}
+  }
+
+  closeEls.forEach(el => el.addEventListener('click', close));
+  overlay && overlay.addEventListener('click', close);
+
+  document.addEventListener('keydown', (e) => {
+    if (!modal.classList.contains('active')) return;
+    if (e.key === 'Escape') close();
+  });
+
+  // Pokazuj zawsze przy każdym wejściu
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', open);
+  } else {
+    open();
+  }
+})();

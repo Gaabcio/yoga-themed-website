@@ -9,11 +9,13 @@
     content="Yogamat — studio jogi w Budzyniu. Łagodne i dynamiczne zajęcia, kameralne grupy. Zapisz się przez WhatsApp i dołącz do praktyki." />
   <link rel="canonical" href="https://www.yogamat.pl/" />
   <meta property="og:title" content="Yogamat — Joga w Budzyniu | Barbara Stryczniewicz" />
-  <meta property="og:description" content="Yogamat — studio jogi w Budzyniu. Łagodne i dynamiczne zajęcia, kameralne grupy. Zapisz się przez WhatsApp." />
+  <meta property="og:description"
+    content="Yogamat — studio jogi w Budzyniu. Łagodne i dynamiczne zajęcia, kameralne grupy. Zapisz się przez WhatsApp." />
   <meta property="og:url" content="https://www.yogamat.pl/" />
   <meta property="og:type" content="website" />
   <meta property="og:image" content="https://www.yogamat.pl/pictures/1strona.png" />
   <meta name="twitter:card" content="summary_large_image" />
+  <meta name="robots" content="index,follow" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link
@@ -24,11 +26,38 @@
 </head>
 
 <body>
+  
+  <!-- Ogłoszenie — modal na wejściu (dzisiejsza zmiana zajęć)  -->
+
+
+  <div id="announcement-modal" class="ann-modal" aria-hidden="true">
+    <div class="ann-modal__overlay" data-ann-close></div>
+    <div class="ann-modal__dialog" role="dialog" aria-modal="true" aria-labelledby="ann-title" aria-describedby="ann-desc">
+      <button class="ann-modal__close" aria-label="Zamknij ogłoszenie" data-ann-close>&times;</button>
+      <div class="ann-modal__head">
+        <h3 id="ann-title">Odwołane zajęcia</h3>
+      </div>
+      <p id="ann-desc" class="ann-modal__text">
+        Zajęcia od <strong>04.01.26 do 14.01.26</strong> są odwołane ze względu na wyjazd jogowy.<br>
+        Od <strong>15.01.26</strong> zapraszamy na zajęcia według grafiku.
+      </p>
+      <div class="ann-modal__actions">
+        <button class="btn btn--ghost" data-ann-close>OK, rozumiem</button>
+        <a class="btn" target="_blank" rel="noopener"
+           href="https://wa.me/48515463042?text=Cze%C5%9B%C4%87%2C%20mam%20pytanie%20dotycz%C4%85ce%20dzisiejszych%20zaj%C4%99%C4%87%20Zdrowy%20Kr%C4%99gos%C5%82up.">
+          Pytanie na WhatsApp
+        </a>
+      </div>
+    </div>
+  </div>
+ 
+
+
   <!-- Nawigacja -->
   <header class="site-header" id="top">
     <div class="container nav">
-      <a href="#top" class="brand" aria-label="Strona główna">
-        <img src="pictures/logo1.png" alt="Logo"/>
+      <a href="#hero" class="brand" aria-label="Strona główna">
+        <img src="pictures/logo1.png" alt="Logo" />
       </a>
       <nav class="main-nav" aria-label="Główna nawigacja">
         <button class="nav-toggle" aria-expanded="false" aria-controls="nav-menu" aria-label="Otwórz menu">
@@ -41,8 +70,8 @@
           <li><a href="#opisy">Opis zajęć</a></li>
           <li><a href="#cennik">Cennik</a></li>
           <li><a href="#o-mnie">O mnie</a></li>
-          <li><a href="#warsztaty">Warsztaty</a></li>          
-          <li><a href="#rekomendacje">Rekomendacje</a></li>
+          <li><a href="#rekomendacje">Opinie</a></li>
+          <li><a href="#warsztaty">Warsztaty</a></li>
           <li><a href="#lokalizacja">Lokalizacja</a></li>
           <li>
             <a class="btn btn--small" target="_blank" rel="noopener"
@@ -61,8 +90,11 @@
       <div class="hero__content">
         <div class="hero__content-top">
           <h1>Poczuj spokój, równowagę i&nbsp;radość</h1>
-          <p>Dopasowane do potrzeb, kameralne studio jogi w Budzyniu. Zatrzymaj się, odetchnij i zadbaj o swoje ciało
-            oraz umysł.</p>
+          <p>
+          <h4><i>Jesteś już zmęczona, dbasz o najbliższych ale zapominasz o sobie?<br> Potrzebujesz znaleźć czas i
+              zadbać tylko o siebie i lepiej radzić sobie z utratą energii?</i></h4><br>
+          Dopasowane do potrzeb, kameralne studio jogi w Budzyniu.<br> Zatrzymaj się, odetchnij i zadbaj o swoje ciało
+          oraz umysł.</p>
         </div>
         <div class="hero__content-bottom">
           <h3>Jestem Basia i zapraszam Cię do mojego świata jogi.</h3>
@@ -71,21 +103,12 @@
               href="https://wa.me/48515463042?text=Cze%C5%9B%C4%87%2C%20chc%C4%99%20zapisa%C4%87%20si%C4%99%20na%20zaj%C4%99cia%20jogi.%20Prosz%C4%99%20o%20szczeg%C3%B3%C5%82y.">
               Napisz na WhatsApp
             </a>
-            
           </div>
         </div>
       </div>
       <div class="hero__media" aria-hidden="true">
         <div class="hg-card">
           <img src="pictures/1strona.png" alt="Joga na świeżym powietrzu" loading="lazy">
-        </div>
-        <div class="hero-gallery">
-          <!-- <div class="hg-card hg-card--emph">
-            <img src="pictures/hero-2.jpg" alt="Instruktorka jogi Basia" loading="lazy">
-          </div>
-          <div class="hg-card">
-            <img src="pictures/hero-1.jpg" alt="Pozycja drzewa w jodze" loading="lazy">
-          </div> -->
         </div>
       </div>
     </div>
@@ -95,7 +118,7 @@
   <!-- Video section (local file) -->
   <section id="video" class="section section--alt" style="padding-top:0;">
     <div class="container center">
-      <h2>Studio jogi — zobacz film</h2>
+      <h3>Mam dla Ciebie rozwiązanie ;)</h3><br> 5 minut drogi od Ciebie <strong>YOGAMAT Studio Ruchu Budzyń 63</strong>
       <div style="max-width:480px; margin:auto;">
         <video controls width="100%" style="border-radius:14px;" autoplay muted loop>
           <source src="film_instagram.mp4" type="video/mp4">
@@ -108,7 +131,10 @@
   <!-- Grafik -->
   <section id="grafik" class="section section--alt">
     <div class="container">
-      <h2>Grafik</h2>
+      <center>
+        <h2>Wybierz swoje zajęcia</h2>
+      </center>
+      <h3>Grafik YOGAMAT Studio Ruchu Sezon 2025/2026</h3>
       <div class="schedule-v2">
         <!-- Poniedziałek -->
         <section class="day-card" aria-labelledby="day-mon">
@@ -155,17 +181,17 @@
         <!-- Środa -->
         <section class="day-card" aria-labelledby="day-wed">
           <h3 id="day-wed"><span class="day-underline">środa</span></h3>
-          <article class="class-tile class--neutral">
+          <article class="class-tile class--blueish">
             <div class="class-header">
               <div class="class-time"><time datetime="19:00">19:00</time></div>
-              <div class="class-title"><strong>Kurs Zdrowy Kręgosłup</strong></div>
+              <div class="class-title"><strong>Kurs Joga na chustach</strong></div>
             </div>
             <div class="class-content">
-              Bezpieczne wprowadzenie do praktyki.
+              Joga na chustach to nie jest odrębna nowa forma treningu. Fundamentem jest tradycyjnie nauczana joga.
               <div class="slot-meta">
                 <a class="more-link" href="#opis-kurs">Więcej o zajęciach</a><br>
                 <a class="slot-wa" target="_blank" rel="noopener"
-                  href="https://wa.me/48515463042?text=Chc%C4%99%20zapisa%C4%87%20si%C4%99%20na%20Zdrowy%20Kr%C4%99gos%C5%82up%20%E2%80%94%20kurs%20(%C5%9Ar%2019%3A00).">
+                  href="https://wa.me/48515463042?text=Chc%C4%99%20zapisa%C4%87%20si%C4%99%20na%20Kurs%20Joga%20na%20chustach%20(%C5%9Ar%2019%3A00).">
                   Zapis przez WhatsApp
                 </a>
               </div>
@@ -193,23 +219,44 @@
             </div>
           </article>
 
-          <article class="class-tile class--neutral">
+ <article class="class-tile class--neutral">
             <div class="class-header">
               <div class="class-time"><time datetime="19:00">19:00</time></div>
               <div class="class-title"><strong>Zdrowy Kręgosłup</strong></div>
             </div>
             <div class="class-content">
-              Dla Twojego kręgosłupa, mobilności i lepszego samopoczucia w ciele.
+              Dla Twojego kręgosłupa, mobilności i dobrego samopoczucia.
               <div class="slot-meta">
                 <a class="more-link" href="#opis-kregoslup">Więcej o zajęciach</a><br>
                 <a class="slot-wa" target="_blank" rel="noopener"
-                  href="https://wa.me/48515463042?text=Chc%C4%99%20zapisa%C4%87%20si%C4%99%20na%20Zdrowy%20Kr%C4%99gos%C5%82up%20(Czw%2019%3A00).">
+                  href="https://wa.me/48515463042?text=Chc%C4%99%20zapisa%C4%87%20si%C4%99%20na%20Zdrowy%20Kr%C4%99gos%C5%82up%20(Wt%2019%3A00).">
                   Zapis przez WhatsApp
                 </a>
               </div>
             </div>
           </article>
         </section>
+
+          <!-- Piątek 
+          <section class="day-card" aria-labelledby="day-fri">
+            <h3 id="day-fri"><span class="day-underline">Piątek</span></h3>
+            <article class="class-tile class--creamy">
+              <div class="class-header">
+                <div class="class-time"><time datetime="18:00">18:00</time></div>
+                <div class="class-title"><strong>YIN Joga</strong></div>
+              </div>
+              <div class="class-content">
+                Yin joga to metoda relaksowania mięśni. Celem tego stylu jogi jest praca na głębszych strukturach ciała, jakim są stawy, powięzi, ścięgna, więzadła, kości.
+                <div class="slot-meta">
+                  <a class="more-link" href="#opis-kregoslup">Więcej o zajęciach</a><br>
+                  <a class="slot-wa" target="_blank" rel="noopener"
+                    href="https://wa.me/48515463042?text=Chc%C4%99%20zapisa%C4%87%20si%C4%99%20na%20YIN%20Joga%20(Pt%2018%3A00).">
+                    Zapis przez WhatsApp
+                  </a>
+                </div>
+              </div>
+            </article>
+          </section>-->
       </div>
       <hr class="sep" />
     </div>
@@ -241,14 +288,39 @@
         </article>
 
         <article class="class-about" id="opis-kurs">
-          <h3>Kurs Zdrowy Kręgosłup</h3>
-          <p>Zawsze chciałaś/eś zacząć jogę, ale coś Cię powstrzymywało? Nie jesteś rozciągnięta/y, boisz się, że się
-            pogubisz, albo że „wszyscy już coś potrafią”?</p>
-          <p>Ten cykl zajęć został stworzony po to, by rozpocząć praktykę jogi w sposób mądry, bezpieczny i dopasowany
+          <h3>Kurs Joga na chustach</h3>
+          <p> Wykorzystanie chust dodaje element pracy z równowagą, a poszukiwanie bezustanne równowagi sprawia, że
+            mięśnie głębokie włączają
+            się do pracy, chusty są podporą dla pozycji odwróconych, relaksacja będzie nieco w ruchu - łagodne kołysanie
+            w hamaku działa kojąco układ nerwowy</p>
+          <p>Ten cykl zajęć został stworzony po to, by pogłębić praktykę jogi w sposób mądry, bezpieczny i dopasowany
             do Ciebie. Zbudujesz siłę i elastyczność od podstaw, nauczysz się poruszać bez napięcia, oddychać tak, by
             ciało zaczęło naprawdę odpoczywać — i poznasz najważniejsze pozycje jogi w przystępny sposób, indywidualnie
-            dostosowany do uczestników.</p>
+            dostosowany do uczestników.
+          </p>
         </article>
+    
+
+        <!--<article class="class-about" id="opis-kurs">
+          <h3>YIN Joga</h3>
+          <p>Podczas praktyki Yin jogi ćwiczymy na rozluźnionych mięśniach. Yin joga jest przeprowadzana bez rozgrzewki.
+            Kiedy nie włączą się do pracy mięśnie, jesteśmy w stanie wpłynąć na głębsze struktury poprzez "pozytywne
+            zestresowanie ich."</p>
+          <p>Koncepcja Yin i Yang są zaczerpnięte z taoizmu.
+            Tao to równowaga, którą chcemy utrzymać w naszym życiu.
+            Jeśli nie zwracamy uwagi na potrzeby swojego organizmu, zostaje zaburzona
+            równowaga pomiędzy Yin i Yang.
+            Nadmiar Yang to stres, nerwowość, niehigieniczne szybkie życie. Zbyt duża
+            koncentracja na osiąganiu celów.
+            Niedobór Yin objawia się chorobami i kontuzjami.
+            Często są to choroby immunologiczne, które zmuszają do zwolnienia tempa i
+            odpoczynku.
+            Nadmiar Yin to stagnacja, nadwaga, zastój, długotrwały smutek.
+            Yin Joga to koncepcja, która łączy świat wschodu i zachodu. Nie neguje żadnego
+            sposobu pracy z ciałem.Liczy się człowiek i to w jaki sposób możesz mu pomóc
+            poprzez praktykę asan.</p>
+        </article>-->
+
       </div>
     </div>
   </section>
@@ -308,38 +380,39 @@
     <div class="container">
       <!-- Rząd 1: zdjęcie lewo, tekst prawo -->
       <div class="about-row">
- <figure class="about-media media-card">
+        <figure class="about-media media-card">
           <img src="pictures/omnie.jpg" style="width: 270px;" alt="Praktyka jogi — wprowadzenie" loading="lazy">
         </figure>
         <div class="about-text">
           <h2>O mnie</h2>
           <p>Przygodę z jogą rozpoczęłam w latach dziewięćdziesiątych w Krakowie w szkole Beaty Jamińskiej, a następnie
             u Konrada Kocota.</p>
-<p> W 2013 r. uzyskałam tytuł „Instruktora rekreacji ruchowej ze specjalnością Hatha Joga”
+          <p> W 2013 r. uzyskałam tytuł „Instruktora rekreacji ruchowej ze specjalnością Hatha Joga”
             uprawniający do samodzielnego prowadzenia zajęć z dorosłymi i dziećmi.</p>
           <p>Przez 3 lata uczyłam się jogi Iyengara u Romana Grzeszykowskiego.</p>
           <p> Później zainspirowałam się podejściem
-           „bezwysiłkowym” Leszka Mioduchowskiego (z użyciem pasków) — świetnie sprawdza się w terapii jogą i dla
+            „bezwysiłkowym” Leszka Mioduchowskiego (z użyciem pasków) — świetnie sprawdza się w terapii jogą i dla
             Seniorów.</p>
         </div>
-       
+
       </div>
 
       <!-- Rząd 2: obraz prawo, tekst lewo -->
       <div class="about-row">
-        
+
         <div class="about-text">
           <h3>Moje podejście do nauczania</h3>
           <ul class="checklist">
             <li>Kameralne grupy i uważność na indywidualne potrzeby.</li>
             <li>Regularne doszkalanie (od 2012 roku warsztaty Stowarzyszenia Jogi Akademickiej).</li>
-            <li>Od 2022 r. Olala Yoga & Pilates School: holistyczne spojrzenie na ciało-  nie tylko znajomość asan, ale także szersze spojrzenie na zdrowie, emocje i funkcjonowanie człowieka. .</li>
+            <li>Od 2022 r. Olala Yoga & Pilates School: holistyczne spojrzenie na ciało- nie tylko znajomość asan, ale
+              także szersze spojrzenie na zdrowie, emocje i funkcjonowanie człowieka. .</li>
           </ul>
           <p>Moim celem jest bezpieczna, dopasowana praktyka, która pomaga czuć się lepiej, zdrowiej i żyć w większym
             komforcie.</p>
 
-     </div>
-<figure class="about-media media-card">
+        </div>
+        <figure class="about-media media-card">
           <img src="pictures/Basiairoze.jpg" alt="Zajęcia w kameralnej grupie" loading="lazy">
         </figure>
       </div>
@@ -347,103 +420,175 @@
     </div>
   </section>
 
-  <!-- Warsztaty (karuzela + galerie) -->
-  <section id="warsztaty" class="section section--alt">
-    <div class="container">
-      <h2>Warsztaty</h2>
-      <!--       
-      <div class="workshop-carousel">
-        <button class="ws-btn prev" type="button" aria-label="Poprzednie">‹</button>
-        <div class="ws-viewport">
-          <div class="ws-track">             
-          </div>
-        </div>
-        <button class="ws-btn next" type="button" aria-label="Następne">›</button>
-      </div> -->
-      <!-- Galerie tematyczne -->
-      <div class="gallery-list mt-1">
-        <details class="gallery-group" open>
-          <summary>GOA grudzień 2024 — "Mikołajki na Goa"</summary>
-          <div class="gallery-grid">
-            <img src="pictures/workshop/mikolajki/mikolajki (1).jpg" alt="Goa 1" loading="lazy">
-            <img src="pictures/workshop/mikolajki/mikolajki (2).jpg" alt="Goa 2" loading="lazy">
-            <img src="pictures/workshop/mikolajki/mikolajki (3).jpg" alt="Goa 3" loading="lazy">
-            <img src="pictures/workshop/mikolajki/mikolajki (4).jpg" alt="Goa 4" loading="lazy">
-            <img src="pictures/workshop/mikolajki/mikolajki (5).jpg" alt="Goa 5" loading="lazy">
-            <img src="pictures/workshop/mikolajki/mikolajki (6).jpg" alt="Goa 6" loading="lazy">
-            <img src="pictures/workshop/mikolajki/mikolajki (7).jpg" alt="Goa 7" loading="lazy">
-            <img src="pictures/workshop/mikolajki/mikolajki (8).jpg" alt="Goa 8" loading="lazy">
-            <img src="pictures/workshop/mikolajki/mikolajki (9).jpg" alt="Goa 9" loading="lazy">
-            <img src="pictures/workshop/mikolajki/mikolajki (10).jpg" alt="Goa 10" loading="lazy">
-            <img src="pictures/workshop/mikolajki/mikolajki (11).jpg" alt="Goa 11" loading="lazy">
-
-          </div>
-        </details>
-        <details class="gallery-group">
-          <summary>Djerba maj 2025</summary>
-          <div class="gallery-grid">
-            <img src="pictures/workshop/djerba/djerba (1).jpg" alt="Djerba 1" loading="lazy">
-            <img src="pictures/workshop/djerba/djerba (2).jpg" alt="Djerba 2" loading="lazy">  
-            <img src="pictures/workshop/djerba/djerba (3).jpg" alt="Djerba 3" loading="lazy">
-            <img src="pictures/workshop/djerba/djerba (4).jpg" alt="Djerba 4" loading="lazy">
-            <img src="pictures/workshop/djerba/djerba (5).jpg" alt="Djerba 5" loading="lazy">
-            <img src="pictures/workshop/djerba/djerba (6).jpg" alt="Djerba 6" loading="lazy">
-            <img src="pictures/workshop/djerba/djerba (7).jpg" alt="Djerba 7" loading="lazy">
-          </div>
-        </details>
-        <details class="gallery-group">
-          <summary>Joga w plenerze czerwiec, lipiec, sierpień 2025 — "Lato z jogą na trawie"</summary>
-          <div class="gallery-grid">
-            <img src="pictures/workshop/joga-w-plenerze/joga (1).jpg" alt="Plener 1" loading="lazy">
-            <img src="pictures/workshop/joga-w-plenerze/joga (2).jpg" alt="Plener 2" loading="lazy">
-            <img src="pictures/workshop/joga-w-plenerze/joga (3).jpg" alt="Plener 3" loading="lazy">
-            <img src="pictures/workshop/joga-w-plenerze/joga (4).jpg" alt="Plener 4" loading="lazy">
-            <img src="pictures/workshop/joga-w-plenerze/joga (5).jpg" alt="Plener 5" loading="lazy">
-            <img src="pictures/workshop/joga-w-plenerze/joga (6).jpg" alt="Plener 6" loading="lazy">
-            <img src="pictures/workshop/joga-w-plenerze/joga (7).jpg" alt="Plener 7" loading="lazy">
-            <img src="pictures/workshop/joga-w-plenerze/joga (8).jpg" alt="Plener 8" loading="lazy">
-          </div>
-        </details>
-      </div>
-    </div>
-  </section>
-
   <!-- Rekomendacje -->
   <section id="rekomendacje" class="section section--alt">
     <div class="container">
-      <h2>Rekomendacje</h2>
+      <h2>Wrażenia po zajęciach jogi </h2>
       <div class="testimonials-grid testimonials-fancy">
-        <div class="testimonial-card">
-          <div class="testimonial-avatar">
-            <img src="pictures/avatars/anna.jpg" alt="Anna K." loading="lazy">
+
+  <div class="testimonial-card">
+          <div class="testimonial-content">
+            <p>„Czwartkowe spotkania jogowe są dla mnie czasem na osadzenie się w ciele, otwarcie się na głębsza
+              współpracę ze sobą samym🙂”</p>
+              <p>★ ★ ★ ★ ★</p>
+            <footer>Marcela</footer>
           </div>
+        </div>
+
+        <div class="testimonial-card">
+          <div class="testimonial-content">
+            <p>„Za każdym razem Joga z Basią pozwala zrelaksować ciało i umysł :)”</p>
+            <p>★ ★ ★ ★ ★</p>
+            <footer>Elżbieta</footer>
+          </div>
+        </div>
+
+        <div class="testimonial-card">
           <div class="testimonial-content">
             <p>„Dzięki zajęciom z Basią odzyskałam energię i spokój. Polecam każdemu!”</p>
-            <footer>Anna K.</footer>
+            <p>★ ★ ★ ★ ★</p>
+            <footer>Anna</footer>
           </div>
         </div>
+
         <div class="testimonial-card">
-          <div class="testimonial-avatar">
-            <img src="pictures/avatars/marta.jpg" alt="Marta S." loading="lazy">
-          </div>
           <div class="testimonial-content">
             <p>„Indywidualne podejście, dużo uważności. Czuję się zaopiekowana na każdej lekcji.”</p>
-            <footer>Marta S.</footer>
+            <p>★ ★ ★ ★ ★</p>
+            <footer>Marta</footer>
           </div>
-        </div>
-        <div class="testimonial-card">
-          <div class="testimonial-avatar">
-            <img src="pictures/avatars/piotr.jpg" alt="Piotr W." loading="lazy">
+        </div>      
+      </div>
+
+      <!-- Formularz dodania opinii -->
+      <section id="dodaj-opinie" aria-labelledby="dodaj-opinie-tytul" class="review-section">
+        <h3 id="dodaj-opinie-tytul">Dodaj swoją opinię</h3>
+        <p>Podziel się krótką informacją jak się czujesz po zajęciach. Twoja opinia może pomóc innym zdecydować się na pierwszą lekcję. Pola oznaczone * są wymagane. Adres e‑mail jest opcjonalny i służy wyłącznie do ewentualnego kontaktu – nie będzie publikowany.</p>
+        <!-- UWAGA: Podmień poniższy adres na swój endpoint z Formspree (https://formspree.io/f/TWOJ_ID) -->
+        <form id="reviewForm" class="review-form" method="POST" action="https://formspree.io/f/xblbaznk" novalidate>
+          <!-- Honeypot anty-spam -->
+          <div class="hp" aria-hidden="true">
+            <label>Nie wypełniaj tego pola <input type="text" name="website" tabindex="-1" autocomplete="off" /></label>
           </div>
-          <div class="testimonial-content">
-            <p>„Joga z Basią to nie tylko ćwiczenia, ale też relaks i wsparcie. Polecam!”</p>
-            <footer>Piotr W.</footer>
+          <fieldset class="rf-group rf-rating">
+            <legend>Ocena zajęć *</legend>
+            <div class="stars" role="radiogroup" aria-label="Wybierz ocenę w gwiazdkach">
+              <button type="button" class="star-btn" data-value="1" aria-label="1 gwiazdka">★</button>
+              <button type="button" class="star-btn" data-value="2" aria-label="2 gwiazdki">★</button>
+              <button type="button" class="star-btn" data-value="3" aria-label="3 gwiazdki">★</button>
+              <button type="button" class="star-btn" data-value="4" aria-label="4 gwiazdki">★</button>
+              <button type="button" class="star-btn" data-value="5" aria-label="5 gwiazdek">★</button>
+            </div>
+            <input type="hidden" name="rating" id="ratingValue" value="0" required />
+            <p class="rf-hint" id="ratingHint">Kliknij gwiazdkę aby wybrać ocenę.</p>
+          </fieldset>
+          <div class="rf-group">
+            <label for="reviewName">Imię lub inicjały *</label>
+            <input id="reviewName" type="text" name="name" required minlength="2" maxlength="40" autocomplete="name" />
           </div>
-        </div>
-        <!-- ...add more testimonials as needed... -->
+          <div class="rf-group">
+            <label for="reviewEmail">E-mail (opcjonalnie)</label>
+            <input id="reviewEmail" name="email" type="email" inputmode="email" autocomplete="email" placeholder="twoj@email.pl" />
+          </div>
+          <div class="rf-group">
+            <label for="reviewText">Twoja opinia *</label>
+            <textarea id="reviewText" name="message" required minlength="15" maxlength="1200" placeholder="Napisz kilka zdań o swoich odczuciach…"></textarea>
+          </div>
+          <div class="rf-group rf-consent">
+            <label class="consent-label">
+              <input type="checkbox" id="reviewConsent" name="consent" required />
+              <span>Wyrażam zgodę na publikację mojej opinii na stronie (bez adresu e-mail). *</span>
+            </label>
+          </div>
+          <div class="rf-actions">
+            <button type="submit" class="btn">Wyślij opinię</button>
+            <button type="reset" class="btn btn--ghost">Wyczyść</button>
+          </div>
+          <div class="rf-status" aria-live="polite" id="reviewStatus"></div>
+          <noscript>
+            <p class="muted">JavaScript jest wyłączony - formularz wyśle dane przez usługę zewnętrzną (Formspree). Aby zobaczyć swoją opinię od razu na stronie, włącz JavaScript.</p>
+          </noscript>
+        </form>
+      </section>        
+
+    </div>
+  </section>
+
+  <!-- Warsztaty (karuzela + galerie) -->
+  <section id="warsztaty" class="section section--alt">
+    <div class="container">
+      <h2>Warsztaty, wyjazdy jogowe</h2>
+
+      <!-- Galerie tematyczne -->
+      <div class="gallery-list mt-1">
+        <details class="gallery-group" open>
+
+          <details class="gallery-group">
+            <summary>Cypr październik 2025 </summary>
+            <div class="gallery-grid">
+              <img src="pictures/workshop/cypr/cypr (1).jpg" alt="Cypr 1" loading="lazy">
+              <img src="pictures/workshop/cypr/cypr (2).jpg" alt="Cypr 2" loading="lazy">
+              <img src="pictures/workshop/cypr/cypr (3).jpg" alt="Cypr 3" loading="lazy">
+              <img src="pictures/workshop/cypr/cypr (4).jpg" alt="Cypr 4" loading="lazy">
+              <img src="pictures/workshop/cypr/cypr (5).jpg" alt="Cypr 5" loading="lazy">
+              <img src="pictures/workshop/cypr/cypr (6).jpg" alt="Cypr 6" loading="lazy">
+              <img src="pictures/workshop/cypr/cypr (7).jpg" alt="Cypr 7" loading="lazy">
+              <img src="pictures/workshop/cypr/cypr (8).jpg" alt="Cypr 8" loading="lazy">
+
+            </div>
+          </details>
+
+          <details class="gallery-group">
+            <summary>Joga w plenerze czerwiec, lipiec, sierpień 2025 — "Lato z jogą na trawie"</summary>
+            <div class="gallery-grid">
+              <img src="pictures/workshop/joga-w-plenerze/joga (1).jpg" alt="Plener 1" loading="lazy">
+              <img src="pictures/workshop/joga-w-plenerze/joga (2).jpg" alt="Plener 2" loading="lazy">
+              <img src="pictures/workshop/joga-w-plenerze/joga (3).jpg" alt="Plener 3" loading="lazy">
+              <img src="pictures/workshop/joga-w-plenerze/joga (4).jpg" alt="Plener 4" loading="lazy">
+              <img src="pictures/workshop/joga-w-plenerze/joga (5).jpg" alt="Plener 5" loading="lazy">
+              <img src="pictures/workshop/joga-w-plenerze/joga (6).jpg" alt="Plener 6" loading="lazy">
+              <img src="pictures/workshop/joga-w-plenerze/joga (7).jpg" alt="Plener 7" loading="lazy">
+              <img src="pictures/workshop/joga-w-plenerze/joga (8).jpg" alt="Plener 8" loading="lazy">
+            </div>
+          </details>
+
+          <details class="gallery-group">
+            <summary>Djerba maj 2025</summary>
+            <div class="gallery-grid">
+              <img src="pictures/workshop/djerba/djerba (1).jpg" alt="Djerba 1" loading="lazy">
+              <img src="pictures/workshop/djerba/djerba (2).jpg" alt="Djerba 2" loading="lazy">
+              <img src="pictures/workshop/djerba/djerba (3).jpg" alt="Djerba 3" loading="lazy">
+              <img src="pictures/workshop/djerba/djerba (4).jpg" alt="Djerba 4" loading="lazy">
+              <img src="pictures/workshop/djerba/djerba (5).jpg" alt="Djerba 5" loading="lazy">
+              <img src="pictures/workshop/djerba/djerba (6).jpg" alt="Djerba 6" loading="lazy">
+              <img src="pictures/workshop/djerba/djerba (7).jpg" alt="Djerba 7" loading="lazy">
+            </div>
+          </details>
+          <details class="gallery-group">
+            <summary>GOA grudzień 2024 — "Mikołajki na Goa"</summary>
+            <div class="gallery-grid">
+              <img src="pictures/workshop/mikolajki/mikolajki (1).jpg" alt="Goa 1" loading="lazy">
+              <img src="pictures/workshop/mikolajki/mikolajki (2).jpg" alt="Goa 2" loading="lazy">
+              <img src="pictures/workshop/mikolajki/mikolajki (3).jpg" alt="Goa 3" loading="lazy">
+              <img src="pictures/workshop/mikolajki/mikolajki (4).jpg" alt="Goa 4" loading="lazy">
+              <img src="pictures/workshop/mikolajki/mikolajki (5).jpg" alt="Goa 5" loading="lazy">
+              <img src="pictures/workshop/mikolajki/mikolajki (6).jpg" alt="Goa 6" loading="lazy">
+              <img src="pictures/workshop/mikolajki/mikolajki (7).jpg" alt="Goa 7" loading="lazy">
+              <img src="pictures/workshop/mikolajki/mikolajki (8).jpg" alt="Goa 8" loading="lazy">
+              <img src="pictures/workshop/mikolajki/mikolajki (9).jpg" alt="Goa 9" loading="lazy">
+              <img src="pictures/workshop/mikolajki/mikolajki (10).jpg" alt="Goa 10" loading="lazy">
+              <img src="pictures/workshop/mikolajki/mikolajki (11).jpg" alt="Goa 11" loading="lazy">
+
+            </div>
+          </details>
+
+
+
       </div>
     </div>
   </section>
+
+
 
   <!-- Lokalizacja -->
   <section id="lokalizacja" class="section">
@@ -517,8 +662,22 @@
       "addressCountry": "PL"
     },
     "telephone": "+48515463042",
-    "sameAs": ["https://wa.me/48515463042"],
-    "url": "https://www.yogamat.pl/"
+    "sameAs": [
+      "https://wa.me/48515463042",
+      "https://www.instagram.com/stryczniewiczbarbara/"
+    ],
+    "url": "https://www.yogamat.pl/",
+    "logo": "https://www.yogamat.pl/pictures/logo.png",
+    "image": "https://www.yogamat.pl/pictures/logo.png"
+  }
+  </script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    "url": "https://www.yogamat.pl/",
+    "name": "Yogamat",
+    "alternateName": "Yogamat — Joga w Budzyniu"
   }
   </script>
 
