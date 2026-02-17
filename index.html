@@ -27,7 +27,7 @@
 
 <body>
   
-  <!-- Ogłoszenie — modal na wejściu (dzisiejsza zmiana zajęć)  -->
+  <!-- Ogłoszenie — modal na wejściu (dzisiejsza zmiana zajęć) -->
 
 
   <div id="announcement-modal" class="ann-modal" aria-hidden="true">
@@ -35,12 +35,18 @@
     <div class="ann-modal__dialog" role="dialog" aria-modal="true" aria-labelledby="ann-title" aria-describedby="ann-desc">
       <button class="ann-modal__close" aria-label="Zamknij ogłoszenie" data-ann-close>&times;</button>
       <div class="ann-modal__head">
-        <h3 id="ann-title">Odwołane zajęcia</h3>
+        <h3 id="ann-title">Ogłoszenie</h3>
       </div>
-      <p id="ann-desc" class="ann-modal__text">
-        Zajęcia od <strong>04.01.26 do 14.01.26</strong> są odwołane ze względu na wyjazd jogowy.<br>
-        Od <strong>15.01.26</strong> zapraszamy na zajęcia według grafiku.
-      </p>
+
+      
+      <img src="pictures/wyjazd.jpeg" alt="Informacje o wyjeździe jogowym" class="ann-modal__image" loading="lazy">
+      <img src="pictures/kurs.jpeg" alt="Informacje o kursie Pilates & Joga" class="ann-modal__image" loading="lazy">
+
+
+      <!-- <p id="ann-desc" class="ann-modal__text">
+        Zajęcia od <strong>04.01.26 do 12.01.26</strong> są odwołane ze względu na wyjazd jogowy.<br>
+        Od <strong>13.01.26</strong> zapraszamy na zajęcia według grafiku.
+      </p> -->
       <div class="ann-modal__actions">
         <button class="btn btn--ghost" data-ann-close>OK, rozumiem</button>
         <a class="btn" target="_blank" rel="noopener"
@@ -50,7 +56,7 @@
       </div>
     </div>
   </div>
- 
+
 
 
   <!-- Nawigacja -->
@@ -184,10 +190,16 @@
           <article class="class-tile class--blueish">
             <div class="class-header">
               <div class="class-time"><time datetime="19:00">19:00</time></div>
-              <div class="class-title"><strong>Kurs Joga na chustach</strong></div>
+              <div class="class-title"><strong>Kurs Pilates & Joga</strong></div>
             </div>
             <div class="class-content">
-              Joga na chustach to nie jest odrębna nowa forma treningu. Fundamentem jest tradycyjnie nauczana joga.
+              Zapisz się, jeśli chcesz:
+              <ul>
+                <li>Ćwiczyć w sposób skuteczny i bezpieczny</li>
+                <li>Pozbyć się napięć w plecach, karku i miednicy</li>
+                <li>Wzmocnić ciało od środka - na lata, nie tylko na chwilę</li>
+                <li>Zyskać większą pewność ruchu i komfort w ciele</li>
+              </ul>
               <div class="slot-meta">
                 <a class="more-link" href="#opis-kurs">Więcej o zajęciach</a><br>
                 <a class="slot-wa" target="_blank" rel="noopener"
@@ -288,14 +300,28 @@
         </article>
 
         <article class="class-about" id="opis-kurs">
-          <h3>Kurs Joga na chustach</h3>
-          <p> Wykorzystanie chust dodaje element pracy z równowagą, a poszukiwanie bezustanne równowagi sprawia, że
-            mięśnie głębokie włączają
-            się do pracy, chusty są podporą dla pozycji odwróconych, relaksacja będzie nieco w ruchu - łagodne kołysanie
-            w hamaku działa kojąco układ nerwowy</p>
-          <p>Ten cykl zajęć został stworzony po to, by pogłębić praktykę jogi w sposób mądry, bezpieczny i dopasowany
+          <h3>Kurs Pilates & Joga</h3>
+          <p> 
+            ✔ Poprawa postawy ciała i ergonomii ruchu<br>
+            ✔ Uwolnienie od napięć w krzyżu, karku, barkach<br>
+            ✔ Wzmocnienie mięśni głębokich bez przeciążania<br>
+            ✔ Poprawa stabilności, równowagi i pewności w ruchu<br>
+            ✔ Większa mobilność i lekkość w codziennych aktywnościach<br>
+          <h4>Dla kogo są to zajęcia?</h4>
+        
+          <ul>
+            <li>Dla osób zmagających się z bólem kręgosłupa, napięciami w karku, barkach lub miednicy</li>
+            <li>Dla tych, którzy pracują siedząco, są po kontuzjach lub czują się niestabilni</li>
+            <li>Dla osób, które chcą poprawić siłę i elastyczność centrum ciała</li>
+            <li>Dla wszystkich, którzy chcą ćwiczyć bezpiecznie i z efektem</li>
+            <li>Nie musisz mieć doświadczenia. </li>
+            <li>To zajęcia dla każdego, kto chce odzyskać poczucie wsparcia od środka - z korzyścią dla pleców, postawy i
+              komfortu życia.</li>
+          </ul>
+          </p>
+          <p>Ten cykl zajęć został stworzony po to, by pogłębić praktykę w sposób mądry, bezpieczny i dopasowany
             do Ciebie. Zbudujesz siłę i elastyczność od podstaw, nauczysz się poruszać bez napięcia, oddychać tak, by
-            ciało zaczęło naprawdę odpoczywać — i poznasz najważniejsze pozycje jogi w przystępny sposób, indywidualnie
+            ciało zaczęło naprawdę odpoczywać - i poznasz najważniejsze pozycje w przystępny sposób, indywidualnie
             dostosowany do uczestników.
           </p>
         </article>

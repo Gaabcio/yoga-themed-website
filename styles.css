@@ -155,7 +155,7 @@ a:hover { text-decoration: none; }
 .sep{ margin-top: clamp(1.2rem, 2.5vw, 2rem); border:0; height:1px; background:#ddd }
 
 /* Opis zajęć */
-.classes-grid{ display:grid; grid-template-columns: repeat(4, 1fr); gap: clamp(1rem, 2.5vw, 1.6rem); margin-top:1rem }
+.classes-grid{ display:grid; grid-template-columns: repeat(3, 1fr); gap: clamp(1rem, 2.5vw, 1.6rem); margin-top:1rem }
 @media (max-width:900px){ .classes-grid{ grid-template-columns: 1fr } }
 .class-about{ background:#fff; border:1px solid var(--border); border-radius: var(--radius); padding:1rem; box-shadow: var(--shadow); }
 .more-link{ display:inline-block; margin-top:.35rem; font-weight:600 }
@@ -572,15 +572,38 @@ a:hover { text-decoration: none; }
 /* ==============================
    Modal ogłoszenia (announcement)
    ============================== */
-.ann-modal{ position:fixed; inset:0; display:none; align-items:center; justify-content:center; z-index:11000; }
+.ann-modal{ position:fixed; inset:0; display:none; align-items:center; justify-content:center; z-index:11000; overflow:auto; padding:1rem; }
 .ann-modal.active{ display:flex }
 .ann-modal__overlay{ position:absolute; inset:0; background: rgba(15,23,42,.55); backdrop-filter: blur(2px); }
 .ann-modal__dialog{
-  position:relative; z-index:1; width:min(92vw, 615px);
+  position:relative; z-index:1; width:min(92vw, 950px);
   background:#fff; border:1px solid var(--border); border-radius: var(--radius);
   box-shadow: var(--shadow); padding: 1rem 1.1rem 1.1rem; animation: zoomIn .2s ease;
+  max-height:90vh; overflow-y:auto;
 }
 .ann-modal__head{ display:flex; gap:.6rem; margin-bottom:.35rem; justify-content: center; }
+.ann-modal__image{ width:100%; max-width:449px; height:auto; border-radius:10px; margin:0.5rem auto; display:inline-block; }
+.ann-modal__dialog > img:nth-of-type(1),
+.ann-modal__dialog > img:nth-of-type(2) {
+  width:calc(50% - 5px);
+  display:inline-block;
+  vertical-align:top;
+}
+.ann-modal__dialog > img:nth-of-type(1) { margin-right:10px; }
+@media (max-width:520px) {
+  .ann-modal{ padding:0.5rem; }
+  .ann-modal__dialog{
+    width:100%;
+    padding:1rem 0.8rem;
+  }
+  .ann-modal__dialog > img:nth-of-type(1),
+  .ann-modal__dialog > img:nth-of-type(2) {
+    width:100%;
+    margin-right:0;
+    margin-bottom:0.5rem;
+  }
+  .ann-modal__close{ top:5px; right:5px; width:32px; height:32px; font-size:20px; }
+}
 .ann-badge{ display:inline-block; background: color-mix(in srgb, var(--primary) 15%, white); color: var(--primary-ink);
   border:1px solid #dbe7e3; padding:.15rem .5rem; border-radius:999px; font-size:.8rem; font-weight:700; letter-spacing:.2px }
 .ann-modal__text{ color:#222; margin:.4rem 0 .9rem }
